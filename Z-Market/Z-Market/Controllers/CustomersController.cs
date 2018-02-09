@@ -14,8 +14,8 @@ namespace Z_Market.Controllers
         private Z_MarketContext db = new Z_MarketContext();
 
         // GET: Customers
-        [Authorize(Roles = "User")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "User")]
+        //[Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             var customers = db.Customers.Include(c => c.DocumentType);
@@ -23,8 +23,8 @@ namespace Z_Market.Controllers
         }
 
         // GET: Customers/Details/5
-        [Authorize(Roles = "User")]
-        [Authorize(Roles = "Admin")]
+       // [Authorize(Roles = "User")]
+        //[Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -40,7 +40,7 @@ namespace Z_Market.Controllers
         }
 
         // GET: Customers/Create
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
                 var List = db.DocumentTypes.ToList();
@@ -82,7 +82,7 @@ namespace Z_Market.Controllers
         }
 
         // GET: Customers/Edit/5
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -116,7 +116,7 @@ namespace Z_Market.Controllers
         }
 
         // GET: Customers/Delete/5
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
