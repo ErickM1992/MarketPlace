@@ -1,0 +1,44 @@
+﻿
+@model Z_Market.ViewModels.UserView
+
+@{
+    ViewBag.Title = "Roles";
+}
+
+<h2>Roles para el usuario: @Model.Name </h2>
+
+
+
+
+<p>
+    @Html.ActionLink("Agregar Rol", "AddRole", new { userID = Model.UserID }, new { @class = "btn btn-success" })
+    @Html.ActionLink("Regresar", "Index", new { } ,new { @class = "btn btn-primary" })
+</p>
+
+
+
+<table class="table">
+
+    <!--Para recorre una lista que no sea una coleccion se usa un for normal-->
+
+    @for (int i = 0; i < Model.Roles.Count; i++)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => Model.Roles[i].RoleName)
+            </td>
+
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { userID = Model.UserID, RoleID = Model.Roles[i].RoleID }, new { @class = "btn btn-danger btn-sm" }) 
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+
+
+
+

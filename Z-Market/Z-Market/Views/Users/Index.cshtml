@@ -1,0 +1,49 @@
+﻿<!-- Una vez enviada la lista la recivo de este lado -->
+@model IEnumerable<Z_Market.ViewModels.UserView>
+
+    @{
+        ViewBag.Title = "Index";
+    }
+
+    <h2>Permisos de usuarios</h2>
+
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EMail)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EMail)
+            </td>
+            <td>
+                @Html.ActionLink("Roles", "Roles", new { UserID = item.UserID }) |
+            </td>
+        </tr>
+}
+
+    </table>
+
+
+
+
+
+
+
+
+
+
+
