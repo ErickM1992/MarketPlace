@@ -240,19 +240,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Parallax\css\chrome.css" />
-    <Content Include="Parallax\css\reset.css" />
-    <Content Include="Parallax\images\grey-dot.png" />
-    <Content Include="Parallax\images\grey-pink-dot.png" />
-    <Content Include="Parallax\images\menu-arrow.png" />
-    <Content Include="Parallax\images\menu-bg.png" />
-    <Content Include="Parallax\js\backgrounds.js" />
-    <Content Include="Parallax\js\html5.js" />
-    <Content Include="Parallax\js\jquery-1.7.1.js" />
-    <Content Include="Parallax\js\jquery-1.7.min.js" />
-    <Content Include="Parallax\js\kinetics.js" />
-    <Content Include="Parallax\js\parallax.js" />
-    <Content Include="Parallax\js\side-nav.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -269,6 +256,18 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Template views\css\creative.css" />
+    <Content Include="Template views\css\creative.min.css" />
+    <Content Include="Template views\js\creative.js" />
+    <Content Include="Template views\js\creative.min.js" />
+    <Content Include="Template views\vendor\jquery-easing\jquery.easing.compatibility.js" />
+    <Content Include="Template views\vendor\jquery-easing\jquery.easing.js" />
+    <Content Include="Template views\vendor\jquery-easing\jquery.easing.min.js" />
+    <Content Include="Template views\vendor\magnific-popup\jquery.magnific-popup.js" />
+    <Content Include="Template views\vendor\magnific-popup\jquery.magnific-popup.min.js" />
+    <Content Include="Template views\vendor\magnific-popup\magnific-popup.css" />
+    <Content Include="Template views\vendor\scrollreveal\scrollreveal.js" />
+    <Content Include="Template views\vendor\scrollreveal\scrollreveal.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -333,9 +332,19 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Users\Roles.cshtml" />
     <Content Include="Views\Users\AddRole.cshtml" />
+    <Content Include="Template views\scss\creative.scss" />
+    <Content Include="Template views\scss\_bootstrap-overrides.scss" />
+    <Content Include="Template views\scss\_global.scss" />
+    <Content Include="Template views\scss\_masthead.scss" />
+    <Content Include="Template views\scss\_mixins.scss" />
+    <Content Include="Template views\scss\_navbar.scss" />
+    <Content Include="Template views\scss\_portfolio.scss" />
+    <Content Include="Template views\scss\_services.scss" />
+    <Content Include="Template views\scss\_variables.scss" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Template views\images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
