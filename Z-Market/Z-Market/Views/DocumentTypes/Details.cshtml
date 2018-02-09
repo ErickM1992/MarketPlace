@@ -21,6 +21,7 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.DocumentTypeId }) |
-    @Html.ActionLink("Back to List", "Index")
+
+    @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-primary" }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DocumentTypeId }, new { @class = "btn btn-info" })
 </p>

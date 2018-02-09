@@ -30,7 +30,7 @@
                 @Html.DisplayFor(modelItem => item.EMail)
             </td>
             <td>
-                @Html.ActionLink("Roles", "Roles", new { UserID = item.UserID }) |
+                @Html.ActionLink("Roles", "Roles", new { UserID = item.UserID }, new { @class = "btn btn-info" }) |
             </td>
         </tr>
 }
