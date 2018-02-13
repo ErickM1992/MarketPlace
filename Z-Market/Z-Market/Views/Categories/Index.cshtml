@@ -145,6 +145,45 @@
             $('#btnAddCategory').on("click", function () {
 
 
+                //Como debemos encontrar un ID primero debemos capturar ese ID que busca el usuario.
+                var description = $('#TxtDescription').val();//El valor de la descripcion.
+
+                //Validamos si se digito un id.
+                if (description == "") {
+                    $('#lblMessage').html("You must enter a description");
+                    return false;
+                }
+
+                //Alcrea un registro es necesario enviar un objeto tipo json para que sea agragado.
+                var category = { Description: description };
+
+                $.ajax({
+
+                    type: 'POST',
+                    url: '/api/CategoriesApi',
+                    data: category,//Se debe enviar la data y no recivirla ya que se creara otro objeto.
+                    datatype: 'json',
+                    cache: false,
+
+                })
+                    .success(function (data) {//La data que recive es la misma data que acabamos de crear, y la envia para verificar.
+
+                        var outPut2 = '';
+
+                            outPut2 += '<hr/>Record Added<br/>'
+                            outPut2 += '<b>Category ID:<b>' + data.CategoryID + '<br/>';
+                            outPut2 += '<b>Description:<b>' + data.Description + '<br/>';
+
+                            //Indicamos que queremos que imprima el codigo hmtl.
+                            $('#lblMessage').html(outPut2);
+
+
+                    })
+                    .error(function () {
+
+                        $('#lblMessage').html('Error!');
+                    });
+
                 return false;
             });
 
@@ -156,6 +195,55 @@
             $('#btnUpdateCategory').on("click", function () {
 
 
+                //Como debemos encontrar un ID primero debemos capturar ese ID que busca el usuario.
+                var description = $('#TxtDescription').val();//El valor de la descripcion.
+                var categoryID = $('#TxtCategoryID').val();//Valor del ID
+
+                //Validamos si se digito un id.
+                if (description == "") {
+                    $('#lblMessage').html("You must enter a description");
+                    return false;
+                } else if (categoryID == "") {
+                    $('#lblMessage').html("You must enter a categoryID");
+                    return fals
+                }
+
+                //Alcrea un registro es necesario enviar un objeto tipo json para que sea agragado.
+                var category = {
+                                 CategoryID: categoryID,
+                                 Description: description
+                               };
+
+                $.ajax({
+
+                    type: 'PUT',
+                    url: '/api/CategoriesApi/' + categoryID,
+                    data: category,//Se debe enviar la data y no recivirla ya que se creara otro objeto.
+                    datatype: 'json',
+                    cache: false,
+
+                })
+                    .success(function (data) {//La data que recive es la misma data que acabamos de crear, y la envia para verificar.
+
+                        var outPut2 = '';
+
+                        outPut2 += '<hr/>The Record was Modified<br/>'
+
+                        //Indicamos que queremos que imprima el codigo hmtl.
+                        $('#lblMessage').html(outPut2);
+
+
+                    })
+                    .error(function () {
+
+                        $('#lblMessage').html('Error!');
+                    });
+
+
+
+
+
+
                 return false;
             });
 
@@ -164,6 +252,50 @@
 
             //Quinto boton.
             $('#btnDeleteCategory').on("click", function () {
+
+
+                //Como debemos encontrar un ID primero debemos capturar ese ID que busca el usuario.
+                var categoryID = $('#TxtCategoryID').val();
+
+                //Validamos si se digito un id.
+                if (categoryID == "") {
+                    $('#lblMessage').html("You must enter a category ID");
+                    return false;
+                }
+
+
+                $.ajax({
+
+                    type: 'DELETE',
+                    url: '/api/CategoriesApi/' + categoryID,
+                    datatype: 'json',
+                    cache: false,
+
+                })
+                    .success(function (data) {
+
+                        var outPut2 = '';
+
+                        if (data != null) {
+
+                            outPut2 += '<hr/>Record Deleted<br/>'
+                            outPut2 += '<b>Category ID:<b>' + data.CategoryID + '<br/>';
+                            outPut2 += '<b>Description:<b>' + data.Description + '<br/>';
+
+                            //Indicamos que queremos que imprima el codigo hmtl.
+                            $('#lblMessage').html(outPut2);
+
+                        } else {
+                            $('#lblMessage').html("Not records found");
+                        }
+
+                    })
+                    .error(function () {
+
+                        $('#lblMessage').html('Error!');
+                    });
+
+
 
 
                 return false;
