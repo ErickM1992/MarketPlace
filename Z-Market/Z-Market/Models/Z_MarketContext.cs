@@ -36,5 +36,7 @@ namespace Z_Market.Models
         public System.Data.Entity.DbSet<Z_Market.Models.Order> Orders { get; set; }
 
         public System.Data.Entity.DbSet<Z_Market.Models.OrderDetail> OrderDetail { get; set; }
+
+        public System.Data.Entity.DbSet<Z_Market.Models.Category> Categories { get; set; }
     }
 }
