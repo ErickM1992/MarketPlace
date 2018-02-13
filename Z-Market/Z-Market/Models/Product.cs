@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -36,7 +37,9 @@ namespace Z_Market.Models
         public String Remarks { get; set; }
 
         //Relacion de muchos con la tabla supplier
+        [JsonIgnore]
         public virtual ICollection<SupplierProduct> SupplierProduct { get; set; }
+        [JsonIgnore]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }
