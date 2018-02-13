@@ -20,15 +20,203 @@
     <input id="TxtCategoryID" type="text" placeholder="Category ID" />
     <input id="TxtDescription" type="text" placeholder="Category Description" />
     <br /> <br />
-   <div id="lblMessage">
+    <div id="lblMessage">
 
-   </div>
+    </div>
 
 }
 
+<!--Hablando de consumir servicios, cuando necesito consumirlo con java script y ajax, primero necesito una seccion de scripts-->
+@section Scripts
+{
+
+    <script type="text/javascript">
+
+        //Primero tomo el control de formulario con la sentencia javaScrpt $(Function(){ })
+        $(function () {
+
+
+            //Se captura el evento del elemento que se utilizar segun su id, en este caso son los botones y su evento clik. y se
+            //ejecuta una funcion anonima, nunca olvidar el 'return false'.
+
+            //Primer boton.
+            $('#btnGetCategories').on("click", function () {
+
+                //Sintaxis ajax: $.ajax({}); dentro vendra lo que seria la llamada.
+                $.ajax({
+                    //Fijar parametros de llamada.
+
+                    //indicar el tipo de llamada.
+                    type: 'GET',
+
+                    //Indicar que url se va a buscar para llamar ese metodo.
+                    url: '/api/CategoriesApi',
+
+                    //Indicar que tipo de datos es el que obtiene.
+                    datatype: 'json',
+
+                    //Indicar si hay o no cache.
+                    cache: false,
+
+
+                })  
+                .success(function (data) { //Lo que ocurre si la llamada fue exitosa. En "data" llegarian lo que son los datos.
+
+                    //variable que se encargara de pintar el codigo html.
+                    var outPut = '';
+
+                    //Recorremos el registro que nos regresa la data.
+                    for (var i = 0; i < data.length; i++) {
+                        //Pintamos todo el panorama html.
+                        outPut += '<hr/><br/>';
+                        outPut += '<b>Category ID:<b>' + data[i].CategoryID + '<br/>';
+                        outPut += '<b>Description:<b>' + data[i].Description; + '<br/>';
+                    }
+
+                    //Indicamos que queremos que imprima el codigo hmtl.
+                    $('#lblMessage').html(outPut);
+
+                })
+                .error(function (hxr, ajaxOptions, throwError) { //Lo que ocurre si hay un error, dicho error ya no vendria con la data.
+
+                    //Indicamos que queremos que imprima el error en hmtl.
+                    $('#lblMessage').html('Error!');
+
+                });
+
+
+                return false;
+            });
 
 
 
+
+            //Segundo boton
+            $('#btnGetCategory').on("click", function () {
+
+                //Como debemos encontrar un ID primero debemos capturar ese ID que busca el usuario.
+                var categoryID = $('#TxtCategoryID').val();
+
+                //Validamos si se digito un id.
+                if (categoryID == "") {
+                    $('#lblMessage').html("You must enter a category ID");
+                    return false;
+                }
+
+
+                $.ajax({
+
+                    type: 'GET',
+                    url: '/api/CategoriesApi/' + categoryID,
+                    datatype: 'json',
+                    cache: false,
+
+                })
+                .success(function (data) {
+
+                    var outPut2 = '';
+
+                    if (data != null) {
+
+                        outPut2 += '<hr/><br/>'
+                        outPut2 += '<b>Category ID:<b>' + data.CategoryID + '<br/>';
+                        outPut2 += '<b>Description:<b>' + data.Description + '<br/>';
+
+                        //Indicamos que queremos que imprima el codigo hmtl.
+                        $('#lblMessage').html(outPut2);
+
+                    } else {
+                        $('#lblMessage').html("Not records found");
+                    }
+
+                    })
+                    .error(function () {
+
+                        $('#lblMessage').html('Error!');
+                    });
+
+                return false;
+            });
+
+
+
+
+            //Tercer boton.
+            $('#btnAddCategory').on("click", function () {
+
+
+                return false;
+            });
+
+
+
+
+
+            //Cuarto boton.
+            $('#btnUpdateCategory').on("click", function () {
+
+
+                return false;
+            });
+
+
+
+
+            //Quinto boton.
+            $('#btnDeleteCategory').on("click", function () {
+
+
+                return false;
+            });
+
+
+            //Cuando la peticion ajax este en marcha, muestreme el loader gif
+            $(document).ajaxStart(function () {
+
+                $('#loading').show();
+
+            });
+
+
+            //Cuando la peticion ajax termine, escondame el loader gif
+            $(document).ajaxStop(function () {
+
+                $('#loading').hide();
+
+            });
+
+
+
+        });
+
+    </script>
+    
+}
+
+<style type="text/css">
+
+    #loading 
+    {
+        display : none;
+        background-color : gray;
+        z-index : 999999;
+        position : absolute;
+        left : 0;
+        top : 0;
+        width: 100%;
+        height : 100%;
+        text-align:center;
+        padding-top: 300px;
+        filter: alpha(opacity=75);
+        -khtml-opacity : 0.75;
+        -moz-opacity : 0.75;
+        opacity : 0.75;
+    }
+</style>
+
+<div id="loading">
+    <img src="~/Images/loader.gif"/>
+</div>
 
 
 
