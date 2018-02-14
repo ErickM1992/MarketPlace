@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -14,7 +15,10 @@ namespace Z_Market.Models
         [StringLength(30, ErrorMessage ="La descripcion debe ser de 30 caracteres.")]
         public String Description { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Employee> Employees{ get; set; }
+
+        [JsonIgnore]
         public virtual ICollection<Customer> Customers { get; set; }
 
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -17,7 +18,9 @@ namespace Z_Market.Models
 
         public OrderStatus OrderStatus { get; set; }//Clase enum.
 
+        [JsonIgnore]
         public virtual Customer Customer { get; set; } //Relacion de uno a varios.
+        [JsonIgnore]
         public virtual ICollection<OrderDetail> OrderDetails { get; set; }//Lado varios de la clase.
 
 

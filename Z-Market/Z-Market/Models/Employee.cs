@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -58,6 +59,7 @@ namespace Z_Market.Models
         public int Age { get { return DateTime.Now.Year - DayOfBirth.Year; } }
 
         //Relacion de 1 con el tipo de documento.
+        [JsonIgnore]
         public virtual DocumentType DocumentType { get; set; }
 
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -47,7 +48,9 @@ namespace Z_Market.Models
 
         public int DocumentTypeId { get; set; }
 
+        [JsonIgnore]
         public virtual DocumentType DocumentType { get; set; }
+        [JsonIgnore]
         public virtual ICollection<Order> Orders { get; set; }
     }
 }

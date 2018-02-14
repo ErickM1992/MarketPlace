@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -40,6 +41,7 @@ namespace Z_Market.Models
         public String EMail { get; set; }
 
         //Relacion de muchos.
+        [JsonIgnore]
         public virtual ICollection<SupplierProduct> SupplierProduct { get; set; }
 
     }
