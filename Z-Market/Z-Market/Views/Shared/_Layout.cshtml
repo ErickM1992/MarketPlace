@@ -17,14 +17,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Z-Market", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <p class="navbar-brand">Z-Market</p>
+                @*Html.ActionLink("Z-Market", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" style="font-weight:bold;">
                     <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                     <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                    <li>
+                    @*<li>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             Archivo<b class="caret">
                             </b>
@@ -38,9 +39,9 @@
                             <li>@Html.ActionLink("Usuarios", "Index", "Users")</li>
 
                         </ul>
-                    </li>
+                    </li>*@
 
-                    <li>
+                    @*<li>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             Operaciones<b class="caret">
                             </b>
@@ -49,17 +50,20 @@
                             <li>@Html.ActionLink("Ordenes", "NewOrder", "Orders")</li>
                             <li>@Html.ActionLink("Categorias", "Index", "Categories")</li>
                         </ul>
-                    </li>
+                    </li>*@
+
+
+
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container-fluid body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Erick Moreira Baltodano</p>
         </footer>
     </div>
 
